@@ -1,0 +1,35 @@
+function processNumbers(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  let duplicates = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        duplicates.push(arr[i]);
+      }
+    }
+  }
+  return { sum: sum, duplicates: duplicates };
+}
+
+console.log(processNumbers([1, 2, 3, 2, 4, 1]));
+function analyzeNumbers(numbers) {
+  const sum = numbers.reduce((total, num) => total + num, 0);
+
+  const seen = new Set();
+  const duplicates = new Set();
+
+  numbers.forEach(num => {
+    if (seen.has(num)) {
+      duplicates.add(num);
+    } else {
+      seen.add(num);
+    }
+  });
+
+  return { sum, duplicates: [...duplicates] };
+}
+
+console.log(analyzeNumbers([1, 2, 3, 2, 4, 1]));
